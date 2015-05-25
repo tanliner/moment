@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+	<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+	        android:background="@color/white"
+			>
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="40sp"
+		        android:text="ID:"
+		        android:textSize="20sp"
+		        android:id="@+id/textView1"
+		        android:layout_alignParentTop="true"
+		        android:layout_alignParentLeft="true"
+		        android:layout_marginLeft="16dp"
+		        android:layout_marginTop="2dp"
+		        android:gravity="top"
+				/>
+
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="40sp"
+				android:text="follow_id"
+				android:textSize="20sp"
+				android:textColor="@color/dark"
+				android:id="@+id/follow_id"
+				android:layout_toRightOf="@id/textView1"
+				android:layout_marginLeft="4dp"
+		        android:gravity="center"
+				/>
+
+		<TextView
+				android:layout_width="120sp"
+				android:layout_height="40sp"
+				android:text="follow_name"
+				android:id="@+id/follow_name"
+				android:textSize="20sp"
+				android:textColor="@color/dark"
+				android:layout_alignParentRight="true"
+				android:gravity="center"
+				/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="40sp"
+			android:text="name:"
+			android:textSize="20sp"
+			android:gravity="top"
+			android:layout_toLeftOf="@id/follow_name"
+		    android:layout_marginRight="4dp"
+			/>
+	</RelativeLayout>
+</LinearLayout>

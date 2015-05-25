@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tool="http://schemas.android.com/apk/res/com.htk.moment.ui"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical"
+              android:background="@drawable/application_launch_back"
+		>
+
+	<utils.view.view.CircleImageView
+			android:layout_width="100dp"
+			android:layout_height="100dp"
+			tool:border_color="#fff"
+			tool:border_width="2dp"
+			android:id="@+id/headPhotoMain"
+			android:layout_gravity="center_horizontal"
+			android:layout_marginTop="100dp"
+			android:src="@drawable/head2"
+			/>
+
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="20dp"
+			>
+
+		<AutoCompleteTextView
+				android:layout_width="fill_parent"
+				android:layout_height="35dp"
+				android:singleLine="true"
+				android:hint="@string/user_name_hint"
+
+				android:textColor="#000025"
+				android:textCursorDrawable="@null"
+				android:id="@+id/set_name"
+				android:background="@drawable/background"
+				android:layout_marginTop="20dp"
+				android:layout_marginLeft="36dp"
+				android:layout_alignParentRight="true"
+				android:layout_marginRight="36dp"
+				/>
+
+		<!--<EditText android:layout_width="fill_parent"-->
+		<!--android:layout_height="35dp"-->
+		<!--android:singleLine="true"-->
+		<!--android:hint="@string/user_name_hint"-->
+		<!--android:text="tanlin@qq.com"-->
+		<!--android:textColor="#000025"-->
+		<!--android:textCursorDrawable="@null"-->
+		<!--android:id="@+id/set_name"-->
+		<!--android:background="@drawable/background"-->
+		<!--android:layout_marginTop="20dp"-->
+		<!--android:layout_marginLeft="36dp"-->
+		<!--android:layout_alignParentRight="true"-->
+		<!--android:layout_marginRight="36dp"-->
+		<!--android:layout_marginBottom="2dp" />-->
+
+		<EditText
+				android:layout_width="fill_parent"
+				android:layout_height="35dp"
+				android:singleLine="true"
+				android:password="true"
+				android:hint="@string/password_edit"
+				android:textColor="#000025"
+				android:textCursorDrawable="@null"
+				android:id="@+id/set_password"
+				android:background="@drawable/background"
+				android:layout_below="@id/set_name"
+				android:layout_marginTop="14dp"
+				android:layout_alignLeft="@id/set_name"
+				android:layout_alignRight="@id/set_name"
+				/>
+
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/find_password"
+				android:textSize="16sp"
+				android:layout_alignRight="@id/set_password"
+				android:layout_alignParentBottom="true"
+				android:layout_marginBottom="16dp"
+				android:id="@+id/find_password"
+				/>
+
+		<Button
+				android:layout_width="99sp"
+				android:layout_height="30sp"
+				android:id="@+id/button_login"
+				android:text="@string/button_login"
+				android:gravity="center"
+				android:background="@drawable/button_effect_of_login"
+				android:textSize="20sp"
+				android:layout_below="@id/set_password"
+				android:layout_marginTop="16dp"
+				android:layout_alignRight="@id/set_password"
+				android:layout_alignLeft="@id/set_password"
+				/>
+
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/button_register"
+				android:textSize="16sp"
+				android:text="注册"
+				android:layout_alignLeft="@id/button_login"
+				android:layout_alignBottom="@id/find_password"
+
+				/>
+	</RelativeLayout>
+</LinearLayout>
+

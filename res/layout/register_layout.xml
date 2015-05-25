@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="#afacacac"
+              android:orientation="vertical"
+              android:focusable="false"
+		>
+	<RelativeLayout android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="16dp"
+			>
+		<ImageView android:layout_width="wrap_content"
+		           android:layout_height="wrap_content"
+		           android:src="@drawable/left"
+		           android:id="@+id/backImage"
+				/>
+		<TextView android:layout_width="wrap_content"
+		          android:layout_height="wrap_content"
+		          android:text="B a c k"
+		          android:textSize="25sp"
+		          android:layout_marginLeft="2dp"
+		          android:layout_toRightOf="@id/backImage"
+		          android:id="@+id/backText"
+				/>
+
+	</RelativeLayout>
+
+	<EditText android:layout_width="fill_parent"
+	          android:layout_height="35dp"
+	          android:layout_marginTop="30dp"
+	          android:background="@drawable/user_register"
+	          android:hint="@string/name_edit"
+	          android:textColor="#000025"
+	          android:textCursorDrawable="@null"
+	          android:id="@+id/register_name_edit"
+	          android:singleLine="true"
+	          android:layout_marginLeft="30dp"
+	          android:layout_marginRight="30dp"
+
+			/>
+
+	<EditText android:layout_width="fill_parent"
+	          android:layout_height="35dp"
+	          android:layout_marginTop="30dp"
+	          android:hint="@string/password_edit"
+	          android:textColor="#000025"
+	          android:inputType="textPassword"
+	          android:textCursorDrawable="@null"
+	          android:background="@drawable/user_register"
+	          android:id="@+id/register_password_edit"
+	          android:layout_marginLeft="30dp"
+	          android:layout_marginRight="30dp"
+	          android:singleLine="true"
+			/>
+
+	<EditText android:layout_width="fill_parent"
+	          android:layout_height="35dp"
+	          android:layout_marginTop="30dp"
+	          android:background="@drawable/user_register"
+	          android:hint="@string/password_confirm"
+	          android:textColor="#000025"
+	          android:inputType="textPassword"
+	          android:textCursorDrawable="@null"
+	          android:id="@+id/register_password_confirm_edit"
+	          android:layout_marginLeft="30dp"
+	          android:layout_marginRight="30dp"
+	          android:singleLine="true"
+			/>
+
+	<EditText android:layout_width="fill_parent"
+	          android:layout_height="35dp"
+	          android:layout_marginTop="30dp"
+	          android:background="@drawable/user_register"
+	          android:hint="@string/email_confirm"
+	          android:textColor="#000025"
+	          android:textCursorDrawable="@null"
+	          android:textStyle="bold|italic"
+	          android:layout_marginLeft="30dp"
+	          android:layout_marginRight="30dp"
+	          android:singleLine="true"
+	          android:inputType="textEmailAddress"
+	          android:id="@+id/register_email_edit"
+	/>
+
+	<LinearLayout android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="30dp"
+	                android:layout_marginRight="30dp"
+	                android:orientation="horizontal"
+	                android:gravity="center_vertical"
+	                android:layout_marginTop="30dp"
+			>
+		<Button android:layout_width="0dp"
+		        android:layout_height="30dp"
+		        android:layout_weight="1"
+		        android:text=" 注册 "
+		        android:textSize="20sp"
+		        android:background="#ee80ffaa"
+
+		        android:id="@+id/button_register"
+				/>
+		<Button android:layout_width="0dp"
+		        android:layout_height="30dp"
+		        android:layout_weight="1"
+		        android:textSize="20sp"
+		        android:text=" 重置 "
+		        android:id="@+id/reset"
+		        android:background="#6680facc"
+				/>
+	</LinearLayout>
+</LinearLayout>

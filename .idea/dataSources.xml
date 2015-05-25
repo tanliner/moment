@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2514480669">
+    <data-source source="LOCAL" name="MySQL - moment@120.24.68.64" uuid="82b249b5-0f31-4069-9047-197befdc5c5a">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://120.24.68.64:3306/moment</jdbc-url>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+      </driver-properties>
+      <libraries />
+    </data-source>
+  </component>
+</project>

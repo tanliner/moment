@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+			  android:id="@+id/after_login_list_view"
+		>
+
+	<utils.view.view.CustomListView
+			android:id="@+id/index_pull_to_refresh_list_view"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:divider="#bdc3c7"
+			android:dividerHeight="18dp"
+			android:scrollbars="none"
+			android:cacheColorHint="#00000000"
+			android:fastScrollEnabled="false"
+			/>
+
+	<!--<utils.view.IndexPullRefreshListView-->
+			<!--android:id="@+id/index_pull_to_refresh_list_view"-->
+			<!--android:layout_width="fill_parent"-->
+			<!--android:layout_height="wrap_content"-->
+			<!--android:divider="#bdc3c7"-->
+			<!--android:dividerHeight="18dp"-->
+			<!--android:scrollbars="none"-->
+			<!--android:cacheColorHint="#00000000"-->
+			<!--android:fastScrollEnabled="false"-->
+			<!--/>-->
+
+	<!--<utils.view.view.MyListView-->
+			<!--android:id="@+id/index_pull_to_refresh_list_view"-->
+			<!--android:layout_width="fill_parent"-->
+			<!--android:layout_height="wrap_content"-->
+			<!--android:divider="#bdc3c7"-->
+			<!--android:dividerHeight="18dp"-->
+			<!--android:scrollbars="none"-->
+			<!--android:cacheColorHint="#00000000"-->
+			<!--android:fastScrollEnabled="false"-->
+			<!--/>-->
+
+	<!--<utils.view.PullToRefreshListView-->
+	<!--android:layout_width="fill_parent"-->
+	<!--android:layout_height="wrap_content"-->
+	<!--android:id="@+id/index_pull_to_refresh_list_view"-->
+	<!--android:divider="#bdc3c7"-->
+	<!--android:dividerHeight="18dp"-->
+	<!--android:scrollbars="none"-->
+	<!--android:cacheColorHint="#00000000"-->
+	<!--android:fastScrollEnabled="false"-->
+	<!--/>-->
+
+	<!--<ListView-->
+	<!--android:layout_width="fill_parent"-->
+	<!--android:layout_height="wrap_content"-->
+	<!--android:id="@+id/testIndexViewXML"-->
+	<!--android:cacheColorHint="#00000000"-->
+	<!--android:divider="#bdc3c7"-->
+	<!--android:dividerHeight="20dp"-->
+	<!--android:scrollbars="none"-->
+	<!--/>-->
+
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+		>
+
+	<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:orientation="vertical"
+			android:background="@color/white"
+			>
+
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				>
+
+			<LinearLayout
+					android:layout_width="wrap_content"
+					android:layout_height="40dp"
+					android:layout_centerHorizontal="true"
+					android:layout_centerVertical="true"
+					android:gravity="center_vertical"
+					android:orientation="horizontal"
+					android:layout_marginTop="10dp"
+					>
+
+				<Button
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="通知"
+				        android:id="@+id/message_index_notice_button"
+				        android:background="#cccccc"
+						/>
+
+				<Button
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="私信"
+						android:id="@+id/message_index_private_notice_button"
+				        android:background="#3498db"
+						/>
+			</LinearLayout>
+		</RelativeLayout>
+
+		<View
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:background="@color/gray"
+				/>
+
+		<android.support.v4.view.ViewPager
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:id="@+id/index_message_content_page"
+				>
+		</android.support.v4.view.ViewPager>
+	</LinearLayout>
+</LinearLayout>

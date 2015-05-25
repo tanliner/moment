@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/white"
+		>
+
+	<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_marginTop="1dp"
+			android:background="#dfded9"
+			>
+
+		<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="25dp"
+				android:layout_gravity="center"
+				android:src="@drawable/user_home_menu_only"
+				android:scaleType="centerCrop"
+				android:id="@+id/user_home_menu_fling"
+				/>
+	</LinearLayout>
+
+	<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="60dp"
+			android:orientation="horizontal"
+			android:gravity="center_vertical"
+			>
+
+		<ImageView
+				style="@style/user_home_photo_image_style"
+				android:src="@drawable/user_home_index_show_all_after_img"
+				android:id="@+id/user_home_index_show_all"
+				/>
+
+		<ImageView
+				style="@style/user_home_photo_image_style"
+				android:src="@drawable/user_home_index_scan_self_before_img"
+				android:id="@+id/user_home_index_scan_self"
+				/>
+
+		<ImageView
+				style="@style/user_home_photo_image_style"
+				android:src="@drawable/user_home_foot"
+				/>
+
+		<ImageView
+				style="@style/user_home_photo_image_style"
+				android:src="@drawable/user_home_likes_folder"
+				/>
+	</LinearLayout>
+
+	<FrameLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			>
+
+		<GridView
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/user_home_photo_classes"
+				android:gravity="center"
+				android:numColumns="3"
+				android:scrollbars="none"
+				android:background="@color/white"
+				android:visibility="visible"
+				/>
+
+		<!--<utils.view.IndexPullRefreshListView android:layout_width="fill_parent"-->
+		<!--android:layout_height="wrap_content"-->
+		<!--android:id="@+id/user_home_self_index_list_view"-->
+		<!--android:layout_gravity="center_horizontal"-->
+		<!--android:visibility="gone"-->
+		<!--android:divider="#bdc3c7"-->
+		<!--android:dividerHeight="18dp"-->
+		<!--android:scrollbars="none"-->
+		<!--android:cacheColorHint="#00000000"-->
+		<!--android:fastScrollEnabled="false"/>-->
+		<ListView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/user_home_self_index_list_view"
+				android:layout_gravity="center_horizontal"
+				android:visibility="gone"
+				android:divider="#bdc3c7"
+				android:dividerHeight="18dp"
+				android:scrollbars="none"
+				android:cacheColorHint="#00000000"
+				android:fastScrollEnabled="false"
+				/>
+	</FrameLayout>
+</LinearLayout>

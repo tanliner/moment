@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+		>
+
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+
+			>
+
+		<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentTop="true"
+				android:layout_alignParentLeft="true"
+				android:layout_marginLeft="10dp"
+				android:paddingTop="5dp"
+				android:paddingBottom="5dp"
+				android:id="@+id/liner"
+				>
+
+			<view
+					android:layout_width="60dp"
+					android:layout_height="60dp"
+					android:id="@+id/like_index_detail_user_photo_head"
+					android:src="@drawable/head2"
+					android:layout_gravity="center_horizontal|center_vertical"
+					class="utils.view.view.CircleImageView"
+
+					/>
+		</LinearLayout>
+
+		<RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+		        android:layout_toRightOf="@id/liner"
+		        android:layout_marginLeft="10dp"
+		        android:layout_alignTop="@id/liner"
+				>
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+			        android:id="@+id/imageView1"
+			        android:src="@drawable/index_clock_img_button"
+			        android:layout_alignParentTop="true"
+			        android:layout_marginTop="5dp"
+					/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/textView1"
+					android:text="流动的心"
+			        android:layout_alignBottom="@id/imageView1"
+			        android:layout_toRightOf="@id/imageView1"
+					/>
+
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+			        android:text="4h"
+			        android:id="@+id/time_of_like_text"
+			        android:layout_alignParentRight="true"
+			        android:layout_alignBottom="@id/textView1"
+			        android:layout_marginRight="16dp"
+					/>
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/imageView2"
+					android:src="@drawable/index_clock_img_button"
+
+					android:layout_alignBottom="@id/imageView1"
+					android:layout_toLeftOf="@id/time_of_like_text"
+			        android:layout_marginRight="4dp"
+					/>
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/textView2"
+			        android:src="@drawable/index_clock_img_button"
+
+			        android:layout_below="@id/imageView1"
+			        android:layout_marginTop="16dp"
+
+					/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+			        android:text="风吹鸡蛋壳，牌去人安乐"
+			        android:layout_toRightOf="@id/textView2"
+			        android:layout_alignBottom="@id/textView2"
+					/>
+
+
+		</RelativeLayout>
+
+	</RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+		>
+
+	<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:orientation="horizontal"
+			>
+
+		<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				>
+
+			<RelativeLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+			        android:paddingLeft="8dp"
+			        android:paddingRight="8dp"
+					>
+
+				<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:src="@drawable/head2"
+				        android:id="@+id/filter_history"
+						/>
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="复古"
+				        android:layout_below="@id/filter_history"
+				        android:layout_marginTop="5dp"
+				        android:layout_centerInParent="true"
+						/>
+			</RelativeLayout>
+		</LinearLayout>
+
+		<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				>
+
+			<RelativeLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingLeft="8dp"
+					android:paddingRight="8dp"
+					>
+
+				<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:src="@drawable/head2"
+						android:id="@+id/filter_white_dark"
+						/>
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="黑白"
+						android:layout_below="@id/filter_white_dark"
+						android:layout_marginTop="5dp"
+						android:layout_centerInParent="true"
+						/>
+			</RelativeLayout>
+		</LinearLayout>
+
+		<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				>
+
+			<RelativeLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingLeft="8dp"
+					android:paddingRight="8dp"
+					>
+
+				<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:src="@drawable/head2"
+						android:id="@+id/filter_polish"
+						/>
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="润色"
+						android:layout_below="@id/filter_polish"
+						android:layout_marginTop="5dp"
+						android:layout_centerInParent="true"
+						/>
+			</RelativeLayout>
+		</LinearLayout>
+
+
+
+	</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="android-support-v13">
+    <CLASSES>
+      <root url="jar://D:/environment/ADT/sdk/extras/android/support/v13/android-support-v13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://D:/environment/ADT/sdk/extras/android/support/v13/src/java" />
+      <root url="file://D:/environment/ADT/sdk/extras/android/support/v4/src/java" />
+    </SOURCES>
+  </library>
+</component>

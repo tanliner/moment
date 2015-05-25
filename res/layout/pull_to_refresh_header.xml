@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+		>
+	<!-- 小型圆形进度条，初始为不可见 -->
+
+	<ProgressBar
+			android:id="@+id/pull_to_refresh_circle_process_bar"
+			style="?android:attr/progressBarStyleSmall"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="30dip"
+			android:layout_marginRight="20dip"
+			android:indeterminate="true"
+			android:visibility="gone" />
+	<!-- 下拉刷新的那个箭头 -->
+
+	<ImageView
+			android:id="@+id/pull_to_refresh_arrow"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_marginLeft="30dip"
+			android:layout_marginRight="20dip"
+			android:gravity="center"
+			android:visibility="gone"
+	        android:src="@drawable/indicator_arrow"
+			/>
+	<!-- 下拉刷新的提示文本 -->
+
+	<TextView
+			android:id="@+id/pull_to_refresh_text"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:paddingTop="5dip"
+			android:textColor="@android:color/holo_green_light"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textStyle="bold"
+			/>
+
+	<TextView
+			android:id="@+id/last_time_refresh_text"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:lines="2"
+			android:layout_below="@id/pull_to_refresh_text"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:visibility="gone"
+	        android:textColor="@android:color/holo_blue_bright"
+			/>
+</RelativeLayout>

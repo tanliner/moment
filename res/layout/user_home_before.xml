@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#efefef"
+		>
+
+	<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="410dp"
+			android:layout_gravity="center_horizontal"
+			android:clipChildren="false"
+
+			>
+
+		<FrameLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				>
+
+			<ImageView
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:id="@+id/imageView3"
+					android:layout_gravity="center_horizontal"
+					android:src="@drawable/me_index_k_back"
+					android:scaleType="centerCrop"
+					android:paddingBottom="120dp"
+					/>
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="随心而动"
+					android:textSize="18sp"
+					android:textStyle="bold"
+					android:textColor="@color/dark"
+					android:id="@+id/user_style_name_home"
+					android:layout_gravity="bottom|right"
+					android:layout_marginRight="85dp"
+					android:layout_marginBottom="90dp"
+					/>
+
+		</FrameLayout>
+
+		<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="start"
+		        android:layout_marginTop="10dp"
+				>
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					>
+
+				<ImageView
+						android:layout_width="30dp"
+						android:layout_height="30dp"
+						android:src="@drawable/left"
+						android:layout_marginLeft="16dp"
+						/>
+
+				<ImageView
+						android:layout_width="30dp"
+						android:layout_height="30dp"
+						android:id="@+id/setting_user_home"
+						android:src="@drawable/settings"
+						android:gravity="center_vertical"
+						android:layout_alignParentRight="true"
+						android:layout_marginRight="16dp"
+						android:adjustViewBounds="false"
+						/>
+			</RelativeLayout>
+		</LinearLayout>
+
+		<utils.view.view.CircleImageView
+				android:layout_width="150dp"
+				android:layout_height="150dp"
+				android:id="@+id/imageView4"
+				android:layout_gravity="left|bottom"
+				android:src="@drawable/head_k"
+				android:layout_marginLeft="16dp"
+				android:layout_marginBottom="10dp"
+				/>
+
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="康       乐"
+				android:textSize="30sp"
+				android:textStyle="bold"
+				android:textColor="#3f474e"
+				android:id="@+id/user_name_home_text"
+				android:layout_gravity="right|bottom"
+				android:layout_marginRight="60dp"
+				android:layout_marginBottom="30dp"
+
+				/>
+
+		<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/imageView5"
+				android:layout_gravity="right|bottom"
+				android:src="@drawable/append_someone"
+				android:layout_marginRight="16dp"
+				android:layout_marginBottom="33dp"
+				/>
+	</FrameLayout>
+
+	<view
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			class="utils.view.layout.UserHomeDetailLayout"
+			android:id="@+id/user_home_detail"
+			android:layout_gravity="center_horizontal"
+			android:orientation="horizontal"
+	        android:layout_marginTop="10dp"
+			/>
+
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			>
+
+		<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="30dp"
+				android:layout_alignParentBottom="true"
+		        android:orientation="vertical"
+		        android:gravity="center_horizontal"
+		        android:background="#dfded9"
+				>
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="25dp"
+					android:src="@drawable/user_home_menu_only"
+					android:scaleType="centerCrop"
+					android:id="@+id/user_home_menu_fling"
+					/>
+		</LinearLayout>
+	</RelativeLayout>
+</LinearLayout>

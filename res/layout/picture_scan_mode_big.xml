@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/dark"
+		>
+
+	<FrameLayout
+			android:layout_width="fill_parent"
+			android:layout_height="280dp"
+			android:layout_gravity="center"
+			>
+
+		<ImageView
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:id="@+id/picture_scan_mode_big_image"
+				android:src="@drawable/view_photo"
+				android:scaleType="centerCrop"
+				android:layout_gravity="center"
+				/>
+		<ProgressBar
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+		        android:layout_gravity="center"
+		        android:id="@+id/big_photo_progress"
+				/>
+
+	</FrameLayout>
+
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:paddingTop="10dp"
+			android:paddingBottom="10dp"
+			android:layout_gravity="center|bottom"
+			android:visibility="gone"
+			android:id="@+id/picture_scan_relative"
+			>
+
+		<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:id="@+id/innerView"
+				android:layout_alignParentBottom="true"
+
+				>
+
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:paddingBottom="10dp"
+					android:paddingTop="8dp"
+					>
+
+				<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:src="@drawable/like_image_button_hollow"
+						android:id="@+id/like_img_of_index_picture_scan_mode_big"
+						android:layout_alignParentLeft="true"
+						android:layout_marginLeft="16dp"
+						/>
+
+				<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:id="@+id/comment_img_of_index_picture_scan_mode_big"
+						android:src="@drawable/comment_image_button_hollow"
+						android:layout_toRightOf="@id/like_img_of_index_picture_scan_mode_big"
+						android:layout_marginLeft="26dp"
+						/>
+
+				<ImageView
+						android:layout_width="25dp"
+						android:layout_height="25dp"
+						android:id="@+id/share_img_of_index_picture_scan_mode_big"
+						android:src="@drawable/share_image_button_hollow"
+						android:layout_toRightOf="@id/comment_img_of_index_picture_scan_mode_big"
+						android:layout_marginLeft="26dp"
+						/>
+
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:id="@+id/like_text_of_index_picture_scan_mode_big"
+						android:layout_toLeftOf="@+id/inner"
+						android:layout_marginRight="5dp"
+						android:text="23"
+						android:textSize="20sp"
+						android:textStyle="bold"
+						android:textColor="@color/white"
+						/>
+
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:id="@+id/inner"
+						android:layout_alignParentRight="true"
+						android:layout_marginRight="16dp"
+						android:text="Likes"
+						android:textSize="20sp"
+						android:textStyle="bold"
+						android:textColor="@color/white"
+						/>
+			</RelativeLayout>
+		</LinearLayout>
+
+		<View
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:id="@+id/view"
+				android:layout_above="@id/innerView"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentRight="true"
+				android:layout_marginLeft="14dp"
+				android:layout_marginRight="14dp"
+				android:layout_marginBottom="5dp"
+				android:background="@color/gray"
+				/>
+
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="30sp"
+				android:id="@+id/picture_scan_mode_big_describe"
+				android:text="在呼伦贝尔大草原上，呼吸着、感受着。"
+
+				android:textColor="@color/white"
+				android:gravity="center_vertical"
+				android:layout_above="@id/view"
+				android:layout_alignParentLeft="true"
+				android:layout_marginLeft="19dp"
+				android:layout_marginBottom="4dp"
+				/>
+	</RelativeLayout>
+</FrameLayout>
