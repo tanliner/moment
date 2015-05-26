@@ -110,11 +110,12 @@ public class MyContentListViewAdapter extends BaseAdapter {
 
 				Integer userId = (Integer) listData.get(position).get("id");
 				Integer rs_id = (Integer) listData.get(position).get("rs_id");
+				Integer likeSum = (Integer) listData.get(position).get("likesNumber");
 				String detail = (String) listData.get(position).get("detailPhoto");
 
 				intent.putExtra("userId", userId);
 				intent.putExtra("rs_id", rs_id);
-
+				intent.putExtra("like", likeSum);
 				intent.putExtra("detailPhoto", detail);
 
 				activity.startActivity(intent);

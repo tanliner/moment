@@ -11,10 +11,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import utils.android.AppManager;
 import utils.android.sdcard.Read;
 import utils.internet.ConnectionHandler;
@@ -63,6 +60,9 @@ public class PictureScanActivity extends Activity {
 
 	private ProgressBar mProgressBar;
 
+	private TextView mLikeNumText;
+
+
 	private static MyHandler myHandler;
 
 	private RelativeLayout mRelativeLayout;
@@ -73,11 +73,16 @@ public class PictureScanActivity extends Activity {
 
 
 	static int rs_id;
+
+	int likeNum;
+
 	int userId;
 
 	String detail;
 
 	String detailUrl;
+
+	Bitmap bitmap;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +101,17 @@ public class PictureScanActivity extends Activity {
 		super.onPause();
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if(bitmap == null){
+			new MyLikeThread(GET_BIG_PHOTO).start();
+		} else {
+			mImageView.setImageBitmap(bitmap);
+		}
+		mLikeNumText.setText(String.valueOf(likeNum));
+	}
+
 	private void initAll() {
 
 		initImg();
@@ -105,8 +121,7 @@ public class PictureScanActivity extends Activity {
 		detail = mIntent.getStringExtra("detailPhoto");
 		userId = mIntent.getIntExtra("userId", default_int);
 		detailUrl = UrlSource.getUrl(detail);
-
-		new MyLikeThread(GET_BIG_PHOTO).start();
+		likeNum = mIntent.getIntExtra("like", -1);
 	}
 
 	private void initImg() {
@@ -118,6 +133,8 @@ public class PictureScanActivity extends Activity {
 		mShareImageView = (ImageView) findViewById(R.id.share_img_of_index_picture_scan_mode_big);
 		mCommentImageView = (ImageView) findViewById(R.id.comment_img_of_index_picture_scan_mode_big);
 		mProgressBar = (ProgressBar) findViewById(R.id.big_photo_progress);
+
+		mLikeNumText = (TextView) findViewById(R.id.like_text_of_index_picture_scan_mode_big);
 	}
 
 	private void imageListener() {
@@ -143,10 +160,10 @@ public class PictureScanActivity extends Activity {
 				isLike = !isLike;
 				if (isLike) {
 					mLikeImageView.setImageResource(R.drawable.like_after);
-					IndexFragment.sendMessage("fresh", "liked");
+					//IndexFragment.sendMessage("fresh", "liked");
 				} else {
 					mLikeImageView.setImageResource(R.drawable.like_image_button_hollow);
-					IndexFragment.sendMessage("fresh", "like");
+					//IndexFragment.sendMessage("fresh", "like");
 				}
 
 				new MyLikeThread(LIKE).start();
@@ -176,16 +193,17 @@ public class PictureScanActivity extends Activity {
 		return rs_id;
 	}
 
-	@Override
-	public boolean onKeyDown(int keyCode, @NonNull KeyEvent event) {
+//	@Override
+//	public boolean onKeyDown(int keyCode, @NonNull KeyEvent event) {
+//
+//		if (keyCode == KeyEvent.KEYCODE_BACK) {
+//			finish();
+//			return true;
+//		}
+//		return super.onKeyDown(keyCode, event);
+//	}
 
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			finish();
-		}
-		return true;
-	}
 
-	Bitmap bitmap;
 
 	private class MyLikeThread extends Thread {
 
@@ -249,15 +267,19 @@ public class PictureScanActivity extends Activity {
 					break;
 				}
 				case GET_BIG_PHOTO:
-					con = ConnectionHandler.getGetConnect(detailUrl);
-					try {
-						bitmap = BitmapFactory.decodeStream(con.getInputStream());
-						sendMessage(TAG, "bigPhotoOk");
 
-					} catch (IOException e) {
-						e.printStackTrace();
-					} finally {
-						con.disconnect();
+					if(bitmap != null){
+						sendMessage(TAG, "bigPhotoOk");
+					} else {
+						con = ConnectionHandler.getGetConnect(detailUrl);
+						try {
+							bitmap = BitmapFactory.decodeStream(con.getInputStream());
+							sendMessage(TAG, "bigPhotoOk");
+						} catch (IOException e) {
+							e.printStackTrace();
+						} finally {
+							con.disconnect();
+						}
 					}
 				default: {
 					break;
@@ -295,7 +317,6 @@ public class PictureScanActivity extends Activity {
 				}
 			}
 		}
-
 	}
 
 
@@ -320,11 +341,14 @@ public class PictureScanActivity extends Activity {
 			} else if ("success".equals(message)) {
 				Log.i(TAG, "like success!");
 				if(isLike){
+					likeNum += 1;
+					mLikeNumText.setText(String.valueOf(likeNum));
 					IndexFragment.sendMessage("fresh", "liked");
 				} else {
+					likeNum -= 1;
+					mLikeNumText.setText(String.valueOf(likeNum));
 					IndexFragment.sendMessage("fresh", "like");
 				}
-
 			} else if ("failed".equals(message)) {
 				Log.i(TAG, "like failed!");
 			} else if ("format_error".equals(message)) {

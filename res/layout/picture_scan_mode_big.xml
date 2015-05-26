@@ -88,7 +88,7 @@
 						android:id="@+id/like_text_of_index_picture_scan_mode_big"
 						android:layout_toLeftOf="@+id/inner"
 						android:layout_marginRight="5dp"
-						android:text="23"
+						android:text="0"
 						android:textSize="20sp"
 						android:textStyle="bold"
 						android:textColor="@color/white"
