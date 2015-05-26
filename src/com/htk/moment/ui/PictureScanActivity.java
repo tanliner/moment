@@ -15,10 +15,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import utils.android.AppManager;
 import utils.android.sdcard.Read;
 import utils.internet.ConnectionHandler;
 import utils.internet.UrlSource;
 import utils.json.JSONObject;
+import utils.view.fragment.IndexFragment;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -70,7 +72,7 @@ public class PictureScanActivity extends Activity {
 	Intent mIntent;
 
 
-	int rs_id;
+	static int rs_id;
 	int userId;
 
 	String detail;
@@ -81,6 +83,7 @@ public class PictureScanActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+		AppManager.getAppManager().addActivity(this);
 		setContentView(R.layout.picture_scan_mode_big);
 
 		initAll();
@@ -140,9 +143,12 @@ public class PictureScanActivity extends Activity {
 				isLike = !isLike;
 				if (isLike) {
 					mLikeImageView.setImageResource(R.drawable.like_after);
+					IndexFragment.sendMessage("fresh", "liked");
 				} else {
 					mLikeImageView.setImageResource(R.drawable.like_image_button_hollow);
+					IndexFragment.sendMessage("fresh", "like");
 				}
+
 				new MyLikeThread(LIKE).start();
 			}
 		});
@@ -164,6 +170,10 @@ public class PictureScanActivity extends Activity {
 //				new MyLikeThread(COMMENT).start();
 			}
 		});
+	}
+
+	public static int getRs_id(){
+		return rs_id;
 	}
 
 	@Override
@@ -309,6 +319,12 @@ public class PictureScanActivity extends Activity {
 				}
 			} else if ("success".equals(message)) {
 				Log.i(TAG, "like success!");
+				if(isLike){
+					IndexFragment.sendMessage("fresh", "liked");
+				} else {
+					IndexFragment.sendMessage("fresh", "like");
+				}
+
 			} else if ("failed".equals(message)) {
 				Log.i(TAG, "like failed!");
 			} else if ("format_error".equals(message)) {

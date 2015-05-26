@@ -61,6 +61,7 @@
 						android:layout_height="30dp"
 						android:src="@drawable/left"
 						android:layout_marginLeft="16dp"
+				        android:id="@+id/user_home_back_to_index"
 						/>
 
 				<ImageView

@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import utils.android.AppManager;
 import utils.view.fragment.MeFragment;
 
 /**
+ * 其他人的主页
  * Created by Administrator on 2015/3/18.
  */
 public class OtherPeopleIndex extends FragmentActivity{
@@ -18,6 +20,7 @@ public class OtherPeopleIndex extends FragmentActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+	    AppManager.getAppManager().addActivity(this);
         setContentView(R.layout.other_people_home_index);
         init();
 

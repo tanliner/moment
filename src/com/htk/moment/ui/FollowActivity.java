@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import come.htk.bean.FollowBean;
+import utils.android.AppManager;
 import utils.android.sdcard.Read;
 import utils.internet.ConnectionHandler;
 import utils.internet.UrlSource;
@@ -43,7 +44,7 @@ public class FollowActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-
+		AppManager.getAppManager().addActivity(this);
 		setContentView(R.layout.follow);
 		initView();
         startListen();

@@ -1,7 +1,9 @@
 package utils.view.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,6 +25,7 @@ import com.htk.moment.ui.R;
 import come.htk.bean.IndexInfoBean;
 import come.htk.bean.SmallPhotoBean;
 import come.htk.bean.UserInfoBean;
+import utils.android.AppManager;
 import utils.android.sdcard.Read;
 import utils.internet.ConnectionHandler;
 import utils.internet.UrlSource;
@@ -82,6 +85,10 @@ public class MeFragment extends Fragment {
 	private TextView mFansNum;
 
 	private ImageView mPlusImageView;
+
+	private ImageView mSettingImageView;
+
+	private ImageView mBackToIndexImageView;
 
 	private int photoNum;
 
@@ -518,6 +525,7 @@ public class MeFragment extends Fragment {
 
 			super.onActivityCreated(savedInstanceState);
 			initBeforeWidgets();
+			setListener();
 			//new MyGetThreeNumThread(userId).start();
 		}
 
@@ -541,11 +549,17 @@ public class MeFragment extends Fragment {
 			mFansText = (TextView) getView().findViewById(R.id.user_home_fans_text);
 
 			mPlusImageView = (ImageView) getView().findViewById(R.id.imageView5);
+			mSettingImageView = (ImageView) getView().findViewById(R.id.setting_user_home);
+			mBackToIndexImageView = (ImageView) getView().findViewById(R.id.user_home_back_to_index);
+
 
 			mPhotoNum = (TextView) getView().findViewById(R.id.user_home_photo_num);
 			mFollowNum = (TextView) getView().findViewById(R.id.user_home_follow_num);
 			mFansNum = (TextView) getView().findViewById(R.id.user_home_fans_num);
+		}
 
+
+		private void setListener(){
 			mPhotoText.setOnClickListener(new View.OnClickListener() {
 
 				@Override
@@ -582,6 +596,41 @@ public class MeFragment extends Fragment {
 
 				}
 			});
+
+			mSettingImageView.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					exitApp();
+				}
+			});
+
+			mBackToIndexImageView.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Log.i(TAG, "just because beautiful");
+				}
+			});
+		}
+		/**
+		 * 退出对话框
+		 */
+		protected void exitApp() {
+			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+			builder.setMessage("确定要退出吗?");
+			builder.setTitle("提示");
+			builder.setPositiveButton("有其他事",
+					new android.content.DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							AppManager.getAppManager().appExit(getActivity());
+							dialog.dismiss();
+						}
+					});
+			builder.setNegativeButton("点错了",
+					new android.content.DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+						}});
+			builder.create().show();
 		}
 
 		private class FollowIdThread extends Thread {

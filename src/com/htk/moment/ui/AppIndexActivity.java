@@ -1,6 +1,9 @@
 package com.htk.moment.ui;
 
+import android.app.ActivityManager;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
@@ -17,6 +20,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import utils.android.AppManager;
 import utils.android.photo.CameraActivity;
 import utils.android.photo.LocalPictureLibrary;
 import utils.view.NotFilingViewPager;
@@ -143,23 +147,12 @@ public class AppIndexActivity extends FragmentActivity {
 
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		AppManager.getAppManager().addActivity(this);
 		setContentView(R.layout.after_login_layout);
 		initAll();
 		widgetsListener();
 		sendLayoutCompleted();
-//		logoName = (TextView) findViewById(R.id.the_logo_name);
-//		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/script_mt_bold.ttf");
-//		logoName.setTypeface(font);
 	}
-
-    /*
-    public interface UserIdGet{
-
-        public int getUserId();
-    }
-
-    UserIdGet u;// = new IndexFragment();
-    */
 
 	@Override
 	protected void onResume() {
@@ -177,6 +170,43 @@ public class AppIndexActivity extends FragmentActivity {
 	protected void onStop() {
 		System.out.println("AppIndex stop");
 		super.onStop();
+	}
+
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(KeyEvent.KEYCODE_BACK == keyCode){
+			exitApp();
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	/**
+	 * 退出对话框
+	 */
+	protected void exitApp() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(AppIndexActivity.this);
+		builder.setMessage("确定要退出吗?");
+		builder.setTitle("提示");
+		builder.setPositiveButton("确定",
+				new android.content.DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						AppManager.getAppManager().appExit(AppIndexActivity.this);
+
+//						AppIndexActivity.this.getApplication().onTerminate();
+//						int nPid = android.os.Process.myPid();
+//						android.os.Process.killProcess(nPid);
+						dialog.dismiss();
+//						AppIndexActivity.this.finish();
+					}
+				});
+		builder.setNegativeButton("再玩会儿",
+				new android.content.DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}});
+		builder.create().show();
 	}
 
 	/**

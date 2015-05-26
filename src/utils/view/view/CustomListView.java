@@ -2,25 +2,25 @@ package utils.view.view;
 
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.*;
 import android.widget.AbsListView.OnScrollListener;
 import com.htk.moment.ui.R;
 
-import java.util.Date;
 
 /**
  * ListView下拉刷新
  *
  */
 public class CustomListView extends ListView implements OnScrollListener {
+
+	public static String TAG = "CustomListView";
 
 	private final static int RELEASE_To_REFRESH = 0;
 	private final static int PULL_To_REFRESH = 1;
@@ -56,7 +56,7 @@ public class CustomListView extends ListView implements OnScrollListener {
 	private int startY;
 	private int firstItemIndex;
 
-	private int state;
+	public static int state;
 
 	private boolean isBack;
 
@@ -68,6 +68,8 @@ public class CustomListView extends ListView implements OnScrollListener {
 	private ProgressBar moreProgressBar;
 	private TextView loadMoreView;
 	private View moreView;
+
+	private static MyHandler myHandler;
 
 	public CustomListView(Context context) {
 		super(context);
@@ -137,7 +139,10 @@ public class CustomListView extends ListView implements OnScrollListener {
 			}
 		});
 		addFooterView(moreView);
+
 	}
+
+
 
 	boolean lastOne = false;
 
@@ -166,6 +171,7 @@ public class CustomListView extends ListView implements OnScrollListener {
 	@SuppressWarnings("NullableProblems")
 	public boolean onTouchEvent(MotionEvent event) {
 
+		System.out.println("is refreshing ?" + state + "---is able ? " + isRefreshable);
 		if (isRefreshable) {
 			switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN:
@@ -266,9 +272,6 @@ public class CustomListView extends ListView implements OnScrollListener {
 	// 当状态改变时候，调用该方法，以更新界面
 	private void changeHeaderViewByState() {
 
-		System.out.println("state is === " + state);
-
-
 		switch (state) {
 		case RELEASE_To_REFRESH:
 			arrowImageView.setVisibility(View.VISIBLE);
@@ -310,7 +313,6 @@ public class CustomListView extends ListView implements OnScrollListener {
 			break;
 		case DONE:
 			headView.setPadding(0, -1 * headContentHeight, 0, 0);
-
 			progressBar.setVisibility(View.GONE);
 			arrowImageView.clearAnimation();
 			arrowImageView.setImageResource(R.drawable.indicator_arrow);
@@ -347,9 +349,12 @@ public class CustomListView extends ListView implements OnScrollListener {
 	public void onRefreshComplete(String date) {
 		state = DONE;
 		lastUpdatedTextView.setText("更新于: " + date);
-		System.out.println("没调用？？？？？？？？？？？？？state = " + state + "!!!!!!");
+
+		lastUpdatedTextView.setVisibility(GONE);
+
 		changeHeaderViewByState();
-		//scrollTo(0, headContentHeight/2);
+
+		//scrollTo(0, headContentHeight);
 
 		moreProgressBar.setVisibility(View.GONE);
 		loadMoreView.setText(getContext().getString(R.string.load_more_data_label));
@@ -391,4 +396,17 @@ public class CustomListView extends ListView implements OnScrollListener {
 		}
 		child.measure(childWidthSpec, childHeightSpec);
 	}
+
+	private class MyHandler extends Handler {
+
+		@Override
+		public void handleMessage(Message msg) {
+			if(msg.what == DONE){
+				System.out.println("CustomListView receive the message state = " + state + " 改变状态");
+				changeHeaderViewByState();
+				//msg.recycle();
+			}
+		}
+	}
+
 }

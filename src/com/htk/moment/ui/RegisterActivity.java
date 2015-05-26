@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
+import utils.android.AppManager;
 import utils.android.sdcard.Read;
 import utils.check.Check;
 import utils.internet.ConnectionHandler;
@@ -61,6 +62,7 @@ public class RegisterActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+		AppManager.getAppManager().addActivity(this);
 		/**
 		 * 设置无标题，全屏幕显示
 		 */

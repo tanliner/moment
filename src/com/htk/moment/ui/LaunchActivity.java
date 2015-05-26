@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
+import utils.android.AppManager;
 import utils.android.sdcard.Read;
 import utils.check.Check;
 import utils.internet.ConnectionHandler;
@@ -82,12 +83,25 @@ public class LaunchActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		// 显示样式：无标题栏
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		AppManager.getAppManager().addActivity(this);
 		//当前Activity 是哪一个布局文件，以何种方式显示
 		setContentView(R.layout.lanuch_layout);
 		initWidgets();
 		theWidgetsFunction();
-		initAutoComplete("name", mName);
 	}
+
+	@Override
+	protected void onResume() {
+		initAutoComplete("name", mName);
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		saveHistory("name", mName);
+		super.onPause();
+	}
+
 
 	/**
 	 * 初始化控件
@@ -146,14 +160,14 @@ public class LaunchActivity extends Activity {
 
 		ArrayAdapter<String> adapter =
 				new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, hisArrays);
-		//只保留最近的50条的记录
+		//只保留最近的5条的记录
 		if (hisArrays.length > 5) {
 			String[] newArrays = new String[5];
 			System.arraycopy(hisArrays, 0, newArrays, 0, 5);
 			adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, newArrays);
 		}
 		auto.setAdapter(adapter);
-		auto.setDropDownHeight(150);
+		auto.setDropDownHeight(400);
 		auto.setThreshold(1);
 		auto.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 

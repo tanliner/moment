@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import com.htk.moment.ui.LaunchActivity;
+import com.htk.moment.ui.PictureScanActivity;
 import com.htk.moment.ui.R;
 import come.htk.bean.IndexInfoBean;
 import come.htk.bean.UserInfoBean;
@@ -89,12 +90,12 @@ public class IndexFragment extends Fragment {
 		if (myHandler == null) {
 			myHandler = new MyHandler();
 		}
+
 		super.onCreate(savedInstanceState);
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
 		return inflater.inflate(R.layout.after_login_listview_layout, container, false);
 	}
 
@@ -102,10 +103,8 @@ public class IndexFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 
 		super.onActivityCreated(savedInstanceState);
-		initAll();
-//		refreshData("refresh");
-//		new IndexPullRefreshListView.freshThread("refresh").start();
-//		listViewAdapter.notifyDataSetChanged();
+		initListView();
+
 	}
 
 	@Override
@@ -127,13 +126,14 @@ public class IndexFragment extends Fragment {
 
 	@Override
 	public void onPause() {
-
+		System.out.println("AppIndex aaaaa pause");
 		super.onPause();
 	}
 
 	@Override
 	public void onStop() {
 		System.out.println("AppIndex aaaaa stop");
+
 		super.onStop();
 	}
 
@@ -155,24 +155,24 @@ public class IndexFragment extends Fragment {
 		super.onDetach();
 	}
 
-	//private static IndexPullRefreshListView listView;
-
 	private CustomListView mCustomListView;
-
-	private void initAll() {
-
-
-
-		initListView();
-	}
 
 	public void initListView() {
 
-//		listView = (IndexPullRefreshListView) this.getView().findViewById(R.id.index_pull_to_refresh_list_view);
-		mCustomListView = (CustomListView) this.getView().findViewById(R.id.index_pull_to_refresh_list_view);
-		listViewAdapter = new MyContentListViewAdapter(context, items);
+		if(mCustomListView == null){
 
-		//listView.setAdapter(listViewAdapter);
+			mCustomListView = (CustomListView) this.getView().findViewById(R.id.index_pull_to_refresh_list_view);
+			listViewAdapter = new MyContentListViewAdapter(context, items);
+
+			/**
+			 * 再次进入的时候，界面不匹配
+			 */
+//			SimpleDateFormat format = new SimpleDateFormat("MM-dd HH:mm");
+//			String date = format.format(new Date());
+//			mCustomListView.onRefreshComplete(date);
+//			mCustomListView.onLoadComplete();
+		}
+
 		mCustomListView.setAdapter(listViewAdapter);
 		mCustomListView.setonRefreshListener(new CustomListView.OnRefreshListener() {
 
@@ -238,7 +238,7 @@ public class IndexFragment extends Fragment {
 
 			Write.writeToHttp(out, outToServer.toString().getBytes());
 
-			Log.i(TAG, rs_id + "  更新 服务器 返回码  -  " + connection.getResponseCode());
+			Log.i(TAG, "rs_id = " + rs_id + "  更新 服务器 返回码  -  " + connection.getResponseCode());
 
 			String temp = Read.read(connection.getInputStream());
 			if (temp == null) {
@@ -458,9 +458,12 @@ public class IndexFragment extends Fragment {
 				}else {
 					Toast.makeText(context, "本次有 " + refreshNum + "条新消息", Toast.LENGTH_SHORT).show();
 				}
+
 				SimpleDateFormat format = new SimpleDateFormat("MM-dd HH:mm");
 				String date = format.format(new Date());
+
 				mCustomListView.onRefreshComplete(date);
+
 				if(theFirstTimeRefresh){
 					mCustomListView.first();
 					theFirstTimeRefresh = false;
@@ -510,6 +513,26 @@ public class IndexFragment extends Fragment {
 					tmpMap = item;
 					if (tmpMap.get("rs_id").equals(indexInfo.getRs_id())) {
 						tmpMap.put("userPicture", indexInfo.getPictureShow());
+						listViewAdapter.notifyDataSetChanged();
+					}
+				}
+			} else if("liked".equals(message)){
+
+				for (HashMap<String, Object> item : items) {
+					tmpMap = item;
+					if (tmpMap.get("rs_id").equals(PictureScanActivity.getRs_id())) {
+						int num = (Integer) tmpMap.get("likesNumber");
+						tmpMap.put("likesNumber", (num + 1));
+						listViewAdapter.notifyDataSetChanged();
+					}
+				}
+
+			} else if("like".equals(message)){
+				for (HashMap<String, Object> item : items) {
+					tmpMap = item;
+					if (tmpMap.get("rs_id").equals(PictureScanActivity.getRs_id())) {
+						int num = (Integer) tmpMap.get("likesNumber");
+						tmpMap.put("likesNumber", (num - 1));
 						listViewAdapter.notifyDataSetChanged();
 					}
 				}

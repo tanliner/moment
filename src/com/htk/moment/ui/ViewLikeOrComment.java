@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
+import utils.android.AppManager;
 import utils.view.fragment.CommentDetailFragment;
 import utils.view.fragment.LikeDetailFragment;
 
@@ -29,12 +30,11 @@ public class ViewLikeOrComment extends FragmentActivity {
 	private TextView mCommentTextView;
 	private ViewPager mViewPager;
 
-	int currentFragmentIndex = 0;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+		AppManager.getAppManager().addActivity(this);
 		setContentView(R.layout.view_like_or_comment_detail);
 		init();
 		change();
